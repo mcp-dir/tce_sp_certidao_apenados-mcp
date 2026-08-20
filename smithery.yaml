@@ -1,0 +1,33 @@
+# Smithery configuration for TCE SP: Certidão de Apenados
+# Schema: https://smithery.ai/docs/build/project-config
+# Remote HTTP MCP — server hosted at https://api.mcp.ai/p_tce_sp_certidao_apenados
+
+name: tce_sp_certidao_apenados-mcp
+displayName: "TCE SP: Certidão de Apenados"
+description: >
+  TCE SP: Certidão de Apenados, consulta em fonte oficial. Hospedado pela plataforma, sem credenciais da plataforma, pague por consulta com crédito pré-pago.
+
+version: 0.1.0
+license: MIT
+homepage: https://github.com/mcp-dir/tce_sp_certidao_apenados-mcp
+repository: https://github.com/mcp-dir/tce_sp_certidao_apenados-mcp
+
+tags:
+  - tce_sp_certidao_apenados
+  - brazil
+  - horizontal
+  - read-only
+
+# Remote HTTP MCP — sem startCommand local (servidor já hospedado)
+startCommand:
+  type: http
+  url: https://api.mcp.ai/p_tce_sp_certidao_apenados
+
+auth:
+  type: oauth2
+  resourceMetadataUrl: https://api.mcp.ai/p_tce_sp_certidao_apenados/.well-known/oauth-protected-resource
+  fallback:
+    type: agent-auth
+    description: >
+      Para clientes sem OAuth 2.1. O agente expõe uma tool authenticate(token).
+      Usuário gera o JWT em https://app.mcp.ai/agent-auth e cola no chat.
